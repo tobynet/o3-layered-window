@@ -15,6 +15,7 @@ object MainForm: TMainForm
   PopupMenu = PopupMenu1
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDblClick = FormDblClick
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13

@@ -17,6 +17,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
+    procedure FormDblClick(Sender: TObject);
   private
     { Private êÈåæ }
     FLayeredWindow: TO3LayeredWindow;
@@ -31,11 +32,8 @@ implementation
 
 {$R *.dfm}
 
-uses SubClassTestUnit;
 const
   ImageSourceFileName = '..\images\coolBG0001.png';
-
-
 
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
@@ -89,6 +87,11 @@ begin
 
   LoadPNG;
   FLayeredWindow.UpdateLayer;
+end;
+
+procedure TMainForm.FormDblClick(Sender: TObject);
+begin
+  ShowMessage('double clicked!!');
 end;
 
 procedure TMainForm.FormKeyDown(Sender: TObject; var Key: Word;
