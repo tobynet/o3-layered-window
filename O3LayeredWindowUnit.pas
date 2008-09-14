@@ -17,6 +17,7 @@ type
     FNewWndProc,
     FOrgWndProc: Pointer;
     FOwner: TWinControl;
+    FOwnerHandle: THandle;
 
     procedure WndMethod(var Msg: TMessage);
 
@@ -49,18 +50,18 @@ begin
   FAlpha := MaxAlpha;
 
   FOwner := (AOwner as TWinControl);
-{
+  FOwnerHandle := FOwner.Handle;
+
   FNewWndProc := Classes.MakeObjectInstance(WndMethod);
   if FNewWndProc <> nil then
-    FOrgWndProc := Pointer(SetWindowLong(FOwner.Handle,
+    FOrgWndProc := Pointer(SetWindowLong(FOwnerHandle,
       GWL_WNDPROC, Longint(FNewWndProc)));
-}
 end;
 
 destructor TO3LayeredWindow.Destroy;
 begin
   if (FOrgWndProc <> nil) and (FOwner <> nil) then begin
-    SetWindowLong(FOwner.Handle, GWL_WNDPROC, Longint(FOrgWndProc));
+    SetWindowLong(FOwnerHandle, GWL_WNDPROC, Longint(FOrgWndProc));
     Classes.FreeObjectInstance(FNewWndProc);
   end;
   FreeAndNil(FSurface);
@@ -94,7 +95,6 @@ var
   ZeroPosition: TPoint;
   FormSize: TSize;
 begin
-{
   if FOwner is TForm then begin
     with TForm(FOwner) do begin
       BorderStyle := bsNone;
@@ -131,7 +131,6 @@ begin
   end;
 
   inherited SetEnabled(True);
-}
 end;
 
 procedure TO3LayeredWindow.WndMethod(var Msg: TMessage);
@@ -140,19 +139,17 @@ procedure TO3LayeredWindow.WndMethod(var Msg: TMessage);
   begin
     if ssLeft in Shift then begin
       ReleaseCapture;
-      SendMessage(FOwner.Handle, WM_SYSCOMMAND, SC_MOVE or 2, MakeLong(X, Y));
+      SendMessage(FOwnerHandle, WM_SYSCOMMAND, SC_MOVE or 2, MakeLong(X, Y));
     end;
   end;
 begin
-{
   if Msg.Msg = WM_MOUSEMOVE then begin
     with CalcCursorPos do
       OnMouseMove(KeysToShiftState(TWMMouseMove(Msg).Keys), X, Y);
   end;
-}
 
   Msg.Result := CallWindowProc(
-    FOrgWndProc, FOwner.Handle,
+    FOrgWndProc, FOwnerHandle,
     Msg.Msg, Msg.WParam, Msg.LParam);
 end;
 

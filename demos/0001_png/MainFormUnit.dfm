@@ -12,10 +12,10 @@ object MainForm: TMainForm
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  PopupMenu = PopupMenu1
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  OnMouseMove = FormMouseMove
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
@@ -30,7 +30,7 @@ object MainForm: TMainForm
   object RadioGroup1: TRadioGroup
     Left = 40
     Top = 72
-    Width = 185
+    Width = 137
     Height = 105
     Caption = 'RadioGroup1'
     Items.Strings = (
@@ -38,5 +38,18 @@ object MainForm: TMainForm
       'mgoe'
       'mage')
     TabOrder = 1
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 176
+    Top = 48
+    object tetst1: TMenuItem
+      Caption = 'tset'
+    end
+    object mag1: TMenuItem
+      Caption = 'mag'
+    end
+    object foobar1: TMenuItem
+      Caption = 'foobar'
+    end
   end
 end

@@ -4,16 +4,19 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, O3LayeredWindowUnit, StdCtrls, pngimage, ExtCtrls;
+  Dialogs, O3LayeredWindowUnit, StdCtrls, pngimage, ExtCtrls, Menus;
 
 type
   TMainForm = class(TForm)
     Button1: TButton;
     RadioGroup1: TRadioGroup;
+    PopupMenu1: TPopupMenu;
+    tetst1: TMenuItem;
+    mag1: TMenuItem;
+    foobar1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
-    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
   private
     { Private êÈåæ }
     FLayeredWindow: TO3LayeredWindow;
@@ -79,16 +82,13 @@ procedure TMainForm.FormCreate(Sender: TObject);
     end;
   end;
 begin
-  TMouseHook.Create(Self);
+//  TMouseHook.Create(Self);
 
-{
   FLayeredWindow := TO3LayeredWindow.Create(Self);
   FLayeredWindow.Parent := Self;
 
   LoadPNG;
   FLayeredWindow.UpdateLayer;
-}
-
 end;
 
 procedure TMainForm.FormKeyDown(Sender: TObject; var Key: Word;
@@ -109,17 +109,6 @@ begin
 
     end;
   end;
-end;
-
-procedure TMainForm.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
-  Y: Integer);
-begin
-{
-  if ssLeft in Shift then begin
-    ReleaseCapture;
-    SendMessage(Handle, WM_SYSCOMMAND, SC_MOVE or 2, MakeLong(X, Y));
-  end;
-}
 end;
 
 end.
