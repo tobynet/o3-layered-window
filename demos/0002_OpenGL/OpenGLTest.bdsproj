@@ -119,7 +119,7 @@
       <Linker Name="ExeDescription"></Linker>
     </Linker>
     <Directories>
-      <Directories Name="OutputDir">..\</Directories>
+      <Directories Name="OutputDir"></Directories>
       <Directories Name="UnitOutputDir">dcu</Directories>
       <Directories Name="PackageDLLOutputDir"></Directories>
       <Directories Name="PackageDCPOutputDir"></Directories>
@@ -173,12 +173,12 @@
     </VersionInfoKeys>
     
     
+    
     <Excluded_Packages>
-      <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcldb100.bpl">Borland Database Components</Excluded_Packages>
-      <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcldbx100.bpl">Borland dbExpress Components</Excluded_Packages>
-      <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dclmid100.bpl">Borland MyBase DataAccess Components</Excluded_Packages>
       <Excluded_Packages Name="C:\Program Files\Borland\BDS\4.0\Bin\dclbde100.bpl">Borland BDE DB Components</Excluded_Packages>
       <Excluded_Packages Name="C:\Program Files\Borland\BDS\4.0\Bin\dbx100.bpl">Borland SQL Explorer UI Package</Excluded_Packages>
+      <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dcldbx100.bpl">Borland dbExpress Components</Excluded_Packages>
+      <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dclmid100.bpl">Borland MyBase DataAccess Components</Excluded_Packages>
       <Excluded_Packages Name="c:\program files\borland\bds\4.0\bin\dclado100.bpl">Borland ADO DB Components</Excluded_Packages>
       <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dclib100.bpl">Borland InterBase Express Components</Excluded_Packages>
       <Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dclIntraweb_80_100.bpl">Intraweb 8.0 Design Package for Borland Development Studio 2006</Excluded_Packages>
