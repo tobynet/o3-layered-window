@@ -143,7 +143,7 @@ procedure TO3LayeredWindow.WndMethod(var Msg: TMessage);
     end;
   end;
 begin
-  if Msg.Msg = WM_MOUSEMOVE then begin
+  if Enabled and (Msg.Msg = WM_MOUSEMOVE) then begin
     with CalcCursorPos do
       OnMouseMove(KeysToShiftState(TWMMouseMove(Msg).Keys), X, Y);
   end;
