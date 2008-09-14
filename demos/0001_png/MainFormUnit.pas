@@ -26,10 +26,13 @@ var
 
 implementation
 
+{$R *.dfm}
+
+uses SubClassTestUnit;
 const
   ImageSourceFileName = '..\images\coolBG0001.png';
 
-{$R *.dfm}
+
 
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
@@ -76,11 +79,16 @@ procedure TMainForm.FormCreate(Sender: TObject);
     end;
   end;
 begin
+  TMouseHook.Create(Self);
+
+{
   FLayeredWindow := TO3LayeredWindow.Create(Self);
   FLayeredWindow.Parent := Self;
 
   LoadPNG;
   FLayeredWindow.UpdateLayer;
+}
+
 end;
 
 procedure TMainForm.FormKeyDown(Sender: TObject; var Key: Word;

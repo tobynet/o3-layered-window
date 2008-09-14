@@ -3,7 +3,8 @@ program PngTest;
 uses
   Forms,
   MainFormUnit in 'MainFormUnit.pas' {MainForm},
-  O3LayeredWindowUnit in '..\..\O3LayeredWindowUnit.pas';
+  O3LayeredWindowUnit in '..\..\O3LayeredWindowUnit.pas',
+  SubClassTestUnit in 'SubClassTestUnit.pas';
 
 {$R *.res}
 
