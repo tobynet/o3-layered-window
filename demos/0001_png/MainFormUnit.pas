@@ -31,7 +31,7 @@ var
 implementation
 
 {$R *.dfm}
-
+uses O3LayeredWindowPNGUtilsUnit;
 const
   ImageSourceFileName = '..\images\coolBG0001.png';
 
@@ -41,51 +41,12 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
-
-  procedure LoadPNG();
-    procedure PNGBitmapToSurface(PNGBitmap: TPNGObject);
-    var x, y: Integer;
-      pDest, pSrc, pAlpha: PByteArray;
-      Alpha: Byte;
-    begin
-      FLayeredWindow.Surface.SetSize(PNGBitmap.Width, PNGBitmap.Height);
-
-      with FLayeredWindow.Surface do
-        for y := 0 to Height - 1 do begin
-          pSrc := PNGBitmap.Scanline[y];
-          pAlpha := PNGBitmap.AlphaScanline[y];
-          pDest := ScanLine[y];
-          for x := 0 to Width - 1 do begin
-            if pAlpha = nil then
-              Alpha := 255
-            else
-              Alpha := pAlpha[x];
-
-//            Alpha := 255;
-            pDest[x * 4 + 0] := pSrc[x * 3 + 0] * Alpha div 255;
-            pDest[x * 4 + 1] := pSrc[x * 3 + 1] * Alpha div 255;
-            pDest[x * 4 + 2] := pSrc[x * 3 + 2] * Alpha div 255;
-            pDest[x * 4 + 3] := Alpha;
-          end;
-        end;
-    end;
-  var PNGBitmap: TPNGObject;
-  begin
-    PNGBitmap := TPNGObject.Create;
-    try
-      PNGBitmap.LoadFromFile(ImageSourceFileName);
-      PNGBitmapToSurface(PNGBitmap);
-    finally
-      FreeAndNil(PNGBitmap);
-    end;
-  end;
 begin
-//  TMouseHook.Create(Self);
-
   FLayeredWindow := TO3LayeredWindow.Create(Self);
   FLayeredWindow.Parent := Self;
 
-  LoadPNG;
+  O3LayeredWindowPNGUtilsUnit.LoadPNGToSurface(
+    FLayeredWindow.Surface, ImageSourceFileName);
   FLayeredWindow.UpdateLayer;
 end;
 
