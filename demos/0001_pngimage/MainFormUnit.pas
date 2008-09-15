@@ -19,6 +19,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure FormDblClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure tetst1Click(Sender: TObject);
   private
 //    FBackGroundBMP: TBitmap;
     FLayeredWindow: TO3LayeredWindow;
@@ -78,6 +79,11 @@ begin
 
     end;
   end;
+end;
+
+procedure TMainForm.tetst1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

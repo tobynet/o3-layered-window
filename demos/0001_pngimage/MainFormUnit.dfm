@@ -45,7 +45,9 @@ object MainForm: TMainForm
     Left = 176
     Top = 48
     object tetst1: TMenuItem
-      Caption = 'tset'
+      Caption = '&Close'
+      ShortCut = 16471
+      OnClick = tetst1Click
     end
     object mag1: TMenuItem
       Caption = 'mag'
