@@ -18,8 +18,10 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
     procedure FormDblClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private êÈåæ }
+//    FBackGroundBMP: TBitmap;
     FLayeredWindow: TO3LayeredWindow;
   public
     { Public êÈåæ }
@@ -31,7 +33,6 @@ var
 implementation
 
 {$R *.dfm}
-uses O3LayeredWindowPNGUtilsUnit;
 const
   ImageSourceFileName = '..\images\coolBG0001.png';
 
@@ -45,14 +46,21 @@ begin
   FLayeredWindow := TO3LayeredWindow.Create(Self);
   FLayeredWindow.Parent := Self;
 
-  O3LayeredWindowPNGUtilsUnit.LoadPNGToSurface(
-    FLayeredWindow.Surface, ImageSourceFileName);
+{
+  Load and draw bitmap...
+}
+
   FLayeredWindow.UpdateLayer;
 end;
 
 procedure TMainForm.FormDblClick(Sender: TObject);
 begin
   ShowMessage('double clicked!!');
+end;
+
+procedure TMainForm.FormDestroy(Sender: TObject);
+begin
+  ;
 end;
 
 procedure TMainForm.FormKeyDown(Sender: TObject; var Key: Word;

@@ -16,6 +16,7 @@ object MainForm: TMainForm
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDblClick = FormDblClick
+  OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13

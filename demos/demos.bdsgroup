@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">Default.Personality</Option>
-      <Option Name="ProjectType"></Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{07A8F3ED-26F9-47AA-AE69-687511C2CDAC}</Option>
-    </Option>
-  </PersonalityInfo>
-  <Default.Personality>
-    
-    <Projects>
-      <Projects Name="PngTest.exe">0001_png\PngTest.bdsproj</Projects>
-      <Projects Name="OpenGLTest.exe">0002_OpenGL\OpenGLTest.bdsproj</Projects>
-      <Projects Name="Targets">PngTest.exe OpenGLTest.exe</Projects>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{07A8F3ED-26F9-47AA-AE69-687511C2CDAC}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="PngTest.exe">0001_pngimage\PngTest.bdsproj</Projects>
+      <Projects Name="GDIPlusTest.exe">0002_GDIPlus\GDIPlusTest.bdsproj</Projects>
+      <Projects Name="OpenGLTest.exe">0003_OpenGL\OpenGLTest.bdsproj</Projects>
+      <Projects Name="Targets">PngTest.exe GDIPlusTest.exe OpenGLTest.exe</Projects>
     </Projects>
     <Dependencies/>
-  </Default.Personality>
+  </Default.Personality>  <StarTeamAssociation></StarTeamAssociation>
+  <StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
 </BorlandProject>
