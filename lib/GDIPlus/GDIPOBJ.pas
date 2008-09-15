@@ -208,7 +208,7 @@ type
   TGPPrivateFontCollection = class(TGPFontCollection)
   public
     constructor Create; reintroduce;
-    destructor destroy; override;
+    destructor Destroy; override;
     function AddFontFile(filename: WideString): TStatus;
     function AddMemoryFont(memory: Pointer; length: Integer): TStatus;
   end;
@@ -266,7 +266,7 @@ type
     constructor Create(stream: IStream; useEmbeddedColorManagement: BOOL  = FALSE); reintroduce; overload;
     function FromFile(filename: WideString; useEmbeddedColorManagement: BOOL = FALSE): TGPImage;
     function FromStream(stream: IStream; useEmbeddedColorManagement: BOOL = FALSE): TGPImage;
-    destructor destroy; override;
+    destructor Destroy; override;
     function Clone: TGPImage;
     function Save(filename: WideString; const clsidEncoder: TGUID;
       encoderParams: PEncoderParameters = nil): TStatus; overload;
@@ -750,7 +750,7 @@ type
       fillMode: TFillMode = FillModeAlternate); reintroduce; overload;
     constructor Create(points: PGPPoint; types: PBYTE; count: Integer;
       fillMode: TFillMode = FillModeAlternate); reintroduce; overload;
-    destructor destroy; override;
+    destructor Destroy; override;
     function Clone: TGPGraphicsPath;
     // Reset the path object to empty (and fill mode to FillModeAlternate)
     function Reset: TStatus;
@@ -965,7 +965,7 @@ type
     constructor Create(hdc: HDC; hdevice: THANDLE); reintroduce; overload;
     constructor Create(hwnd: HWND; icm: BOOL{ = FALSE}); reintroduce; overload;
     constructor Create(image: TGPImage); reintroduce; overload;
-    destructor destroy; override;
+    destructor Destroy; override;
     procedure Flush(intention: TFlushIntention = FlushIntentionFlush);
     //------------------------------------------------------------------------
     // GDI Interop methods
@@ -3824,7 +3824,7 @@ implementation
     );
   end;
 
-  destructor TGPImage.destroy;
+  destructor TGPImage.Destroy;
   begin
     GdipDisposeImage(nativeImage);
   end;
@@ -4438,7 +4438,7 @@ implementation
     SetNativeGraphics(graphics);
   end;
 
-  destructor TGPGraphics.destroy;
+  destructor TGPGraphics.Destroy;
   begin
     GdipDeleteGraphics(nativeGraphics);
   end;
@@ -6804,7 +6804,7 @@ implementation
     lastResult := GdipNewPrivateFontCollection(nativeFontCollection);
   end;
 
-  destructor TGPPrivateFontCollection.destroy;
+  destructor TGPPrivateFontCollection.Destroy;
   begin
     GdipDeletePrivateFontCollection(nativeFontCollection);
     inherited Destroy;
@@ -6849,7 +6849,7 @@ implementation
       lastResult := GdipCreatePath2I(points, types, count, fillMode, nativePath);
   end;
 
-  destructor TGPGraphicsPath.destroy;
+  destructor TGPGraphicsPath.Destroy;
   begin
     GdipDeletePath(nativePath);
   end;

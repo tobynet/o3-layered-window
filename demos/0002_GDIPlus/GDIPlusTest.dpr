@@ -1,5 +1,7 @@
 program GDIPlusTest;
 
+{%File '..\..\Readme.txt'}
+
 uses
   Forms,
   MainFormUnit in 'MainFormUnit.pas' {MainForm},

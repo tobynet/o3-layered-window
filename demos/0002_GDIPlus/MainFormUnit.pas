@@ -20,11 +20,9 @@ type
     procedure FormDblClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
-    { Private êÈåæ }
 //    FBackGroundBMP: TBitmap;
     FLayeredWindow: TO3LayeredWindow;
   public
-    { Public êÈåæ }
   end;
 
 var
@@ -33,8 +31,10 @@ var
 implementation
 
 {$R *.dfm}
+uses GDIPAPI, GDIPOBJ, GDIPUTIL;
 const
-  ImageSourceFileName = '..\images\coolBG0001.png';
+  BackGroundImageSourceFileName = '..\images\coolBG0001.png';
+  LogoImageSourceFileName = '..\images\80s-logo.png';
 
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
@@ -42,13 +42,35 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  Graphics: TGPGraphics;
+  BackGroundImage: TGPImage;
+  LogoImage: TGPImage;
 begin
   FLayeredWindow := TO3LayeredWindow.Create(Self);
   FLayeredWindow.Parent := Self;
 
-{
-  Load and draw bitmap...
-}
+
+  // Load and draw bitmap...
+  BackGroundImage := nil; Graphics := nil; LogoImage := nil;
+  try
+    BackGroundImage := TGPImage.Create(BackGroundImageSourceFileName);
+    FLayeredWindow.Surface.SetSize(
+      BackGroundImage.GetWidth, BackGroundImage.GetHeight);
+    LogoImage := TGPImage.Create(LogoImageSourceFileName);
+
+    Graphics := TGPGraphics.Create(FLayeredWindow.Surface.Canvas.Handle);
+    Graphics.Clear(aclTransparent);
+    Graphics.DrawImage(BackGroundImage, 0, 0);
+    Graphics.DrawImage(LogoImage,
+      0, 0);
+//      (BackGroundImage.GetWidth - LogoImage.GetWidth) / 2,
+//      (BackGroundImage.GetHeight - LogoImage.GetHeight) / 2);
+  finally
+    FreeAndNil(LogoImage); 
+    FreeAndNil(BackGroundImage); 
+    FreeAndNil(Graphics);
+  end;
 
   FLayeredWindow.UpdateLayer;
 end;

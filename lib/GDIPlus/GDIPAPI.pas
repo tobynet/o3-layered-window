@@ -1840,7 +1840,7 @@ type
     Points : PGPPointF;
     Types  : PBYTE;
     constructor Create;
-    destructor destroy; override;
+    destructor Destroy; override;
   end;
 
   PCharacterRange = ^TCharacterRange;
@@ -6772,7 +6772,7 @@ end;
     Types := nil;
   end;
 
-  destructor TPathData.destroy;
+  destructor TPathData.Destroy;
   begin
     if assigned(Points) then freemem(Points);
     if assigned(Types) then freemem(Types);

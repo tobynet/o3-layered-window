@@ -12,10 +12,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
-    { Private éŒ¾ }
     FLayeredWindow: TO3LayeredWindow;
   public
-    { Public éŒ¾ }
   end;
 
 var

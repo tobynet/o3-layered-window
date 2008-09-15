@@ -20,11 +20,9 @@ type
     procedure FormDblClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
-    { Private éŒ¾ }
 //    FBackGroundBMP: TBitmap;
     FLayeredWindow: TO3LayeredWindow;
   public
-    { Public éŒ¾ }
   end;
 
 var
