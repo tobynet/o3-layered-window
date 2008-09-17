@@ -12,7 +12,7 @@ See support sites.
 -(Japanese) Delphi/O3LayeredWindow - TOBY SOFT wiki
 http://tobysoft.net/wiki/index.php?Delphi%2FO3LayeredWindow
 -(English) Home — o3-layered-window-for-delphi — GitHub
-http://github.com/toooooooby/o3-layered-window-for-delphi/wikis
+http://github.com/toooooooby/o3-layered-window/wikis
 
 *License
 
